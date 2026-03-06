@@ -457,19 +457,18 @@ function M.symbols(opts, ctx)
         end,
       })
 
+      vim.notify("it's working!!")
       -- Fix sorting
-      if not opts.workspace then
-        table.sort(items, function(a, b)
-          local la = #(a.name or "")
-          local lb = #(b.name or "")
-        
-          if la == lb then
-            return (a.name or "") < (b.name or "")
-          end
-        
-          return la < lb
-        end)
-      end
+      table.sort(items, function(a, b)
+        local la = #(a.name or "")
+        local lb = #(b.name or "")
+      
+        if la == lb then
+          return (a.name or "") < (b.name or "")
+        end
+      
+        return la < lb
+      end)
 
       -- fix last
       local last = {} ---@type table<snacks.picker.finder.Item, snacks.picker.finder.Item>
