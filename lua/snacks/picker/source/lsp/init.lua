@@ -458,16 +458,18 @@ function M.symbols(opts, ctx)
       })
 
       -- Fix sorting
-      table.sort(items, function(a, b)
-        local la = #(a.name or "")
-        local lb = #(b.name or "")
-      
-        if la == lb then
-          return (a.name or "") < (b.name or "")
-        end
-      
-        return la < lb
-      end)
+      if opts.workspace then
+        table.sort(items, function(a, b)
+          local la = #(a.name or "")
+          local lb = #(b.name or "")
+
+          if la == lb then
+            return (a.name or "") < (b.name or "")
+          end
+
+          return la < lb
+        end)
+      end
 
       -- fix last
       local last = {} ---@type table<snacks.picker.finder.Item, snacks.picker.finder.Item>
