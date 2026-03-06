@@ -457,7 +457,6 @@ function M.symbols(opts, ctx)
         end,
       })
 
-      vim.notify("it's working!!")
       -- Fix sorting
       table.sort(items, function(a, b)
         local la = #(a.name or "")
