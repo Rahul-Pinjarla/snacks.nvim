@@ -460,10 +460,14 @@ function M.symbols(opts, ctx)
       -- Fix sorting
       if not opts.workspace then
         table.sort(items, function(a, b)
-          if a.pos[1] == b.pos[1] then
-            return a.pos[2] < b.pos[2]
+          local la = #(a.name or "")
+          local lb = #(b.name or "")
+        
+          if la == lb then
+            return (a.name or "") < (b.name or "")
           end
-          return a.pos[1] < b.pos[1]
+        
+          return la < lb
         end)
       end
 
